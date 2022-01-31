@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom'
 import './scss/style.scss'
+import { UserAuthContextProvider } from "./contexts/UserAuthContext";
 
 const loading = (
   <div className="pt-3 text-center">
@@ -20,6 +21,7 @@ const Page500 = React.lazy(() => import('./views/pages/page500/Page500'))
 class App extends Component {
   render() {
     return (
+      <UserAuthContextProvider>
       <HashRouter>
         <React.Suspense fallback={loading}>
           <Switch>
@@ -36,6 +38,7 @@ class App extends Component {
           </Switch>
         </React.Suspense>
       </HashRouter>
+      </UserAuthContextProvider>
     )
   }
 }
